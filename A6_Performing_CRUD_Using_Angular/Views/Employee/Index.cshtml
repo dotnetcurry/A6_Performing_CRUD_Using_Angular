@@ -1,0 +1,117 @@
+﻿<html ng-app="crudModule">
+@{
+    ViewBag.Title = "Index";
+}
+
+<head title="">
+    <style type="text/css">
+        #tblContainer, #tblcollections, #tblCRUD, td {
+            border: double;
+        }
+
+        th {
+            background-color: darkgray;
+        }
+
+        #dvcollection {
+            height: 500px;
+            overflow-y: scroll;
+        }
+    </style>
+
+    
+</head>
+<h2>Using Angular for Performing CRUD Operations</h2>
+<body>
+    <table id="tblContainer" ng-controller="crudController">
+        <tr>
+            <td>
+                <table id="tblCRUD">
+                    <tr>
+                        <td>
+                            <span>EmpNo</span>
+                        </td>
+                        <td>
+                            <input type="text" id="eno" readonly="readonly" ng-model="EmpNo"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>EmpName</span>
+                        </td>
+                        <td>
+                            <input type="text" id="ename" required ng-model="EmpName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Salary</span>
+                        </td>
+                        <td>
+                            <input type="text" id="salary" required ng-model="Salary" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>DeptName</span>
+                        </td>
+                        <td>
+                            <input type="text" id="dname" required ng-model="DeptName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span>Designation</span>
+                        </td>
+                        <td>
+                            <input type="text" id="desig" required ng-model="Designation" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" id="new" value="New" ng-click="clear()" />
+                        </td>
+                        <td>
+                            <input type="button" id="save" value="Save" ng-click="save()" />
+                        </td>
+                        <td>
+                            <input type="button" id="delete" value="Delete" ng-click="delete()" />
+                        </td>
+                    </tr>
+                </table>
+                <div>{{Message}}</div>
+            </td>
+            <td>
+                <div id="dvcollection">
+                    <table id="tblcollections">
+                        <thead>
+                            <tr>
+                                <th>EmpNo</th>
+                                <th>EmpName</th>
+                                <th>Salary</th>
+                                <th>DeptName</th>
+                                <th>Designation</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-repeat="Emp in Employees">
+                            <tr ng-click="get(Emp)">
+                                <td> <span>{{Emp.EmpNo}}</span></td>
+                                <td> <span>{{Emp.EmpName}}</span></td>
+                                <td> <span>{{Emp.Salary}}</span></td>
+                                <td> <span>{{Emp.DeptName}}</span></td>
+                                <td> <span>{{Emp.Designation}}</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/angular-route.js"></script>
+<script src="~/Scripts/MyScripts/Module.js"></script>
+<script src="~/Scripts/MyScripts/Service.js"></script>
+<script src="~/Scripts/MyScripts/Controller.js"></script>
